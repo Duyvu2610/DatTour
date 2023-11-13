@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+.wrapper {
+	width: 1000px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.header{
+	display: flex;
+	justify-content: flex-end;
+}
+.button{
+	background: dodgerblue;
+	padding: 2px 8px;
+	color: white;
+}

@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+tr:nth-child(odd){
+	background-color: lightskyblue;
+}
+tr:nth-child(even){
+	background-color: aquamarine;
+}
+th{
+	background-color: darkgray;
+}
+table{
+	width: 100%;
+}
