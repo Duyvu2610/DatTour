@@ -1,7 +1,10 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Collection"%>
 <%@page import="model.Tour"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +13,25 @@
 <link rel="stylesheet" type="text/css" href="./css/index.css">
 <title>Insert title here</title>
 <style type="text/css">
-	table{
+table {
 	width: 100%;
 }
+
 td:nth-child(3) {
 	text-align: right;
 }
-td:nth-child(4){
+
+td:nth-child(4) {
 	text-align: center;
 	width: 76px
 }
-
-
 </style>
 </head>
 <body>
 	<div class="wrapper">
-		<%
-		Collection<Tour> tours = (Collection<Tour>) request.getAttribute("tours");
-		
-		%>
-		<p class="title"><b>Các chương trình DU LỊCH</b></p>
+		<p class="title">
+			<b>Các chương trình DU LỊCH</b>
+		</p>
 
 		<table>
 			<tr>
@@ -40,25 +41,30 @@ td:nth-child(4){
 				<th>Đặt</th>
 			</tr>
 
-			<%
-			for (Tour tour : tours) {
-				DecimalFormat decimalFormat = new DecimalFormat("#,##0.##");
-				String formattedNumber = decimalFormat.format(tour.getPrice());
-				formattedNumber = formattedNumber.replace(",", ".");
-			%>
-			<tr>
-				<td><a href="tour-detail?id=<%= tour.getId()%>"><b><%= tour.getDescription() %></b></a>
-					<div><%= tour.getDays() %></div></td>
-				<td><%= tour.getDepartureSchedule() %></td>
-				<td><b><%= formattedNumber%></b></td>
-				<td>
-					<form action="booking-tour?id=<%=tour.getId()%>" method = "post"><button class="button"><b>Đặt tour</b></button></form>
-				</td>
-				
-			</tr>
-			<%
-			}
-			%>
+			<c:forEach var="tour" items="${requestScope.tours}">
+				<fmt:formatNumber var="formattedNumber" value="${tour.price}"
+					type="number" pattern="#,##0.##" />
+				<c:set var="formattedNumber"
+					value="${formattedNumber.replace(',', '.')}" />
+
+
+
+
+				<tr>
+					<td><a href="tour-detail?id=${tour.id}"><b>${tour.description}</b></a>
+						<div>${tour.days}</div></td>
+					<td>${tour.departureSchedule}</td>
+					<td><b>${formattedNumber}</b></td>
+					<td>
+						<form action="booking-tour?id=${tour.id}" method="post">
+							<button class="button">
+								<b>Đặt tour</b>
+							</button>
+						</form>
+					</td>
+				</tr>
+
+			</c:forEach>
 		</table>
 	</div>
 </body>

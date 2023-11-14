@@ -1,5 +1,6 @@
 <%@page import="model.Tour"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,15 +30,14 @@ form {
 </style>
 </head>
 <body>
-	<%
-	Tour tour = (Tour) request.getAttribute("tour");
-	%>
+	<c:set var="tour" value="${requestScope.tour}" />
 	<div class="wrapper">
 		<div>
-			<span>Đặt tour : </span><b><%=tour.getDescription()%></b><span>
-				<%=tour.getDays()%></span>
+			<span>Đặt tour : </span><b><c:out value="${tour.description}" /></b><span>
+                <c:out value="${tour.days}" />
+            </span>
 		</div>
-		<form method = "post" action="confirm?id=<%=tour.getId()%>">
+		<form method = "post" action="confirm?id=<c:out value="${tour.id}" />">
 			<div style="">
 				<b>Thông tin khách hàng</b>
 				<div>
