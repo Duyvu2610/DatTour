@@ -12,7 +12,7 @@ import services.TourService;
 /**
  * Servlet implementation class ListTourServlet
  */
-@WebServlet("/tours")
+@WebServlet("")
 public class ListTourServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private TourService tourService = new TourService();

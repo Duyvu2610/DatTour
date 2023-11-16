@@ -1,4 +1,3 @@
-<%@page import="model.Tour"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -81,7 +80,7 @@ form {
 				</div>
 				<div style="margin-left: 370px">
 					<button type = "submit">Gửi</button>
-					<button><a href = "tours"style="all: unset">Hủy</a></button>
+					<button><a href = "/DatTour" style="all: unset">Hủy</a></button>
 				</div>
 
 

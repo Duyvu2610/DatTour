@@ -1,4 +1,3 @@
-<%@page import="model.Tour"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -24,7 +23,7 @@
 			<button class="button">
 				<a href="booking-tour?id=${tour.id}" style="all: unset">Đặt tour</a>
 			</button>
-			<a href="tours">CHƯƠNG TRÌNH TOUR</a>
+			<a href="/DatTour">CHƯƠNG TRÌNH TOUR</a>
 		</div>
 	</div>
 </body>
